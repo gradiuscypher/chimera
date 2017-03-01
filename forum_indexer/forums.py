@@ -49,3 +49,9 @@ def get_forum_threads(domain, cookies, forum_id):
 
     for p in posts:
         print(p.div.a)
+
+
+def get_thread(domain, cookies, thread_id):
+    result = requests.get(domain + "/showthread.php?t={}".format(thread_id), cookies=cookies)
+    soup = BeautifulSoup(result.text, 'html.parser')
+    return soup
